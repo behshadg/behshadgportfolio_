@@ -1,19 +1,24 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../Navbar.css'; // Import custom CSS file for navbar styling
 
 function Navbar() {
   const location = useLocation();
+  const [apiMessage, setApiMessage] = useState('');
+
+  useEffect(() => {
+    fetch('/api/message')
+      .then((response) => response.json())
+      .then((data) => setApiMessage(data.message))
+      .catch((error) => console.error('Error fetching message:', error));
+  }, []);
 
   return (
     <div className="navbar">
       <ul>
         <li>
-          <Link
-            to="/"
-            className={location.pathname === '/' ? 'active' : ''}
-            activeClassName="active-link"
-          >
+          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
             Resume
           </Link>
         </li>
@@ -21,7 +26,6 @@ function Navbar() {
           <Link
             to="/projects"
             className={location.pathname === '/projects' ? 'active' : ''}
-            activeClassName="active-link"
           >
             Projects
           </Link>
@@ -30,7 +34,6 @@ function Navbar() {
           <Link
             to="/contact"
             className={location.pathname === '/contact' ? 'active' : ''}
-            activeClassName="active-link"
           >
             Contact
           </Link>
@@ -39,7 +42,6 @@ function Navbar() {
           <Link
             to="/skills"
             className={location.pathname === '/skills' ? 'active' : ''}
-            activeClassName="active-link"
           >
             Skills
           </Link>
@@ -48,7 +50,6 @@ function Navbar() {
           <Link
             to="/about"
             className={location.pathname === '/about' ? 'active' : ''}
-            activeClassName="active-link"
           >
             About
           </Link>
