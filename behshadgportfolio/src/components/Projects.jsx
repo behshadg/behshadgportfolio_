@@ -1,5 +1,5 @@
 function Projects() {
-  return <>hello</>;
+  return <></>;
 }
 
 export default Projects;

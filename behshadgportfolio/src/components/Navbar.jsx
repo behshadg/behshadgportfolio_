@@ -16,6 +16,7 @@ function Navbar() {
 
   return (
     <div className="navbar">
+      <p>API Message: {apiMessage}</p>
       <ul>
         <li>
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>

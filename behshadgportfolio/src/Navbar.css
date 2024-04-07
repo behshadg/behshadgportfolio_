@@ -20,10 +20,10 @@
 }
 
 .navbar ul li a:hover {
-  color: #007bff; /* Change to your desired hover color */
+  color: #007bff;
 }
 
 .navbar ul li a.active,
 .navbar ul li a.active-link {
-  font-weight: bold; /* Example of active link styling */
+  font-weight: bold;
 }
