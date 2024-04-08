@@ -6,7 +6,7 @@ function Resume() {
     <div className="resume-container">
       <h1 className="resume-heading">My Resume</h1>
       <div className="pdf-container">
-        <embed
+        <iframe
           src={resumePDF}
           type="application/pdf"
           width={1000}
