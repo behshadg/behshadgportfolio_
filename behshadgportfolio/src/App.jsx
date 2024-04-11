@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import Home from './components/Home';
 import './index.css';
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Resume />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/skills" element={<Skills />} />

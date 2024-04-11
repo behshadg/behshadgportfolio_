@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../Navbar.css'; // Import custom CSS file for navbar styling
+import '../Navbar.css';
 
 function Navbar() {
   const location = useLocation();
@@ -16,10 +16,17 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <p>API Message: {apiMessage}</p>
       <ul>
         <li>
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/resume"
+            className={location.pathname === '/' ? 'active' : ''}
+          >
             Resume
           </Link>
         </li>
