@@ -1,22 +1,42 @@
-function About() {
+import React from 'react';
+
+const About = () => {
   return (
-    <section id="about">
-      <div className="container mx-auto flex px-10 py-20 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-            Hi, I'm Behshad
-            <br className="hidden lg:inline-block" />I love to build amazing
-            apps.
-          </h1>
-          <p className="mb-8 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-            laborum quasi, incidunt dolore iste nostrum cupiditate voluptas?
-            Laborum, voluptas natus?
-          </p>
+    <div
+      name="about"
+      id="about"
+      className="w-full h-screen bg-[#0a192f] text-gray-300"
+    >
+      <div className="flex flex-col justify-center items-center w-full h-full">
+        <div className=" py-16 rounded-md bg-cyan-800 flex flex-col justify-center items-center w-4/6">
+          <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8 mb-4">
+            <div className="sm:text-right pb-8 pl-4">
+              <p className="text-4xl font-bold inline border-b-4 border-cyan-500">
+                About me!
+              </p>
+            </div>
+            <div></div>
+          </div>
+          <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
+            <div className="sm:text-right text-4xl font-bold">
+              <p>
+                Hi. I'm Behshad Ghassemi, nice to meet you. Please take a look
+                around.
+              </p>
+            </div>
+            <div>
+              <p>
+                {' '}
+                A web developer with experience in building Responsive and
+                Scalable Web apps. I am well-knowledged in UI/UX principles and
+                practices. In addition to software development, I also have a
+                strong background in customer service/success roles.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
-
+};
 export default About;
