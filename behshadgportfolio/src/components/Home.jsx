@@ -1,5 +1,5 @@
 import { HiArrowNarrowRight } from 'react-icons/hi';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -12,12 +12,12 @@ const Home = () => {
           <p className="text-gray-500 py-4 max-w-md">
             I have 2 years of experience in web development. Currently, I love
             to work on web application using technologies like
-            React.js/Javascript, HTML/CSS, Tailwind, Express and Node.
+            React.js/Javascript, HTML/CSS, Tailwind CSS, Express and Node.
           </p>
           <div>
             <Link
-              to="about"
-              smooth
+              to="/about"
+              smooth="true"
               duration={500}
               className="group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer"
             >

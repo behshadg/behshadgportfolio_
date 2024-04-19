@@ -1,69 +1,109 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function Contact() {
-  const [formData, setformData] = useState({
+const Contact = () => {
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
   const handleChange = (e) => {
-    setformData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setformData({
-      name: '',
-      email: '',
-      message: '',
-    });
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/contact',
+        formData
+      );
+      console.log('Form submission successful:', response.data);
+      // Reset form fields or show a success message
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      // Show an error message
+    }
   };
 
   return (
-    <div>
-      <h2>Contact Me</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+    <div className="bg-gray-900 min-h-screen py-20">
+      <div className="container mx-auto px-4">
+        <h1 className="text-4xl font-bold text-white mb-8 text-center">
+          Contact Me
+        </h1>
+        <div className="max-w-2xl mx-auto">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-gray-800 p-8 rounded-lg shadow-md"
+          >
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-gray-300 font-bold mb-2"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-gray-300 font-bold mb-2"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="message"
+                className="block text-gray-300 font-bold mb-2"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your message"
+              />
+            </div>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="bg-blue-500 text-white font-bold py-2 px-6 rounded-md hover:bg-blue-600 transition-colors duration-300"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      </div>
     </div>
   );
-}
+};
 
 export default Contact;

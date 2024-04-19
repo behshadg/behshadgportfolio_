@@ -1,80 +1,23 @@
-// import React from 'react';
-// import { useState, useEffect } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-// import '../Navbar.css';
-
-// function Navbar() {
-//   const location = useLocation();
-//   const [apiMessage, setApiMessage] = useState('');
-
-//   useEffect(() => {
-//     fetch('/api/message')
-//       .then((response) => response.json())
-//       .then((data) => setApiMessage(data.message))
-//       .catch((error) => console.error('Error fetching message:', error));
-//   }, []);
-
-//   return (
-//     <div className="navbar">
-//       <ul>
-//         <li>
-//           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
-//             Home
-//           </Link>
-//         </li>
-//         <li>
-//           <Link
-//             to="/resume"
-//             className={location.pathname === '/' ? 'active' : ''}
-//           >
-//             Resume
-//           </Link>
-//         </li>
-//         <li>
-//           <Link
-//             to="/projects"
-//             className={location.pathname === '/projects' ? 'active' : ''}
-//           >
-//             Projects
-//           </Link>
-//         </li>
-//         <li>
-//           <Link
-//             to="/contact"
-//             className={location.pathname === '/contact' ? 'active' : ''}
-//           >
-//             Contact
-//           </Link>
-//         </li>
-//         <li>
-//           <Link
-//             to="/skills"
-//             className={location.pathname === '/skills' ? 'active' : ''}
-//           >
-//             Skills
-//           </Link>
-//         </li>
-//         <li>
-//           <Link
-//             to="/about"
-//             className={location.pathname === '/about' ? 'active' : ''}
-//           >
-//             About
-//           </Link>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Navbar;
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   const handleClick = () => setNav(!nav);
 
   return (
@@ -104,6 +47,11 @@ const Navbar = () => {
           <Link to="/resume">Resume</Link>
         </li>
       </ul>
+
+      {/* Light/Dark Mode Toggle Button */}
+      <button onClick={toggleTheme} className="text-white ml-4 md:hidden">
+        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      </button>
 
       {/* Hamburger */}
       <div onClick={handleClick} className="md:hidden z-10">
@@ -145,6 +93,11 @@ const Navbar = () => {
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/contact">
             Contact
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="/resume">
+            Resume
           </Link>
         </li>
       </ul>

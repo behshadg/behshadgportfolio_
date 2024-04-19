@@ -12,6 +12,22 @@ function Projects() {
       image: 'https://via.placeholder.com/300x200',
     },
     {
+      name: 'Random Password Generator',
+      description:
+        'a simple web application that allows users to generate strong, random passwords based on their preferences. Users can specify the length of the password and choose whether to include uppercase letters, lowercase letters, numbers, and special characters.',
+      technologies: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'Tailwind CSS',
+        'React',
+        'Vite',
+      ],
+      githubLink: 'https://github.com/behshadg/RandomPWGen',
+      liveLink: 'https://behshadg-randompwgen.netlify.app/',
+      image: 'https://via.placeholder.com/300x200',
+    },
+    {
       name: 'Weather App',
       description:
         'A weather app that fetches real-time weather data using an API.',
@@ -41,27 +57,46 @@ function Projects() {
   ];
 
   return (
-    <div className="projects-container">
-      {projects.map((project, index) => (
-        <div key={index} className="project-card">
-          <img src={project.image} alt={project.name} />
-          <div className="project-info">
-            <h3>{project.name}</h3>
-            <p>{project.description}</p>
-            <p>
-              <strong>Technologies:</strong> {project.technologies.join(', ')}
-            </p>
-            <div className="project-links">
-              <a href={project.githubLink} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-              <a href={project.liveLink} target="_blank" rel="noreferrer">
-                Live Site
-              </a>
+    <div className="bg-gray-100 min-h-screen py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">Projects</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden"
+            >
+              <img src={project.image} alt={project.name} />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+                <p className="text-gray-700 mb-4">{project.description}</p>
+                <p className="text-sm text-gray-600">
+                  <strong>Technologies:</strong>{' '}
+                  {project.technologies.join(', ')}
+                </p>
+                <div className="flex mt-4">
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mr-4 text-blue-500 hover:underline"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Live Site
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
