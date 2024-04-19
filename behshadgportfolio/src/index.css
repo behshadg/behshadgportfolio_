@@ -29,3 +29,16 @@
     hsla(242, 74%, 61%, 0.8)
   ) !important;
 }
+
+button {
+  @apply px-4 py-2 rounded-md bg-blue-500 text-white font-bold hover:bg-blue-600 transition-colors duration-300;
+}
+
+button:focus {
+  @apply outline-none;
+}
+
+/* Adjust styles for specific button elements */
+.light-mode-button {
+  @apply ml-4; /* Adjust margin-left for the light mode button */
+}

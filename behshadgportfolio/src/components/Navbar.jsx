@@ -10,6 +10,7 @@ const Navbar = () => {
   });
 
   useEffect(() => {
+    console.log('Theme:', theme);
     document.documentElement.className = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
@@ -49,7 +50,11 @@ const Navbar = () => {
       </ul>
 
       {/* Light/Dark Mode Toggle Button */}
-      <button onClick={toggleTheme} className="text-white ml-4 md:hidden">
+      <button
+        onClick={toggleTheme}
+        className="text-white ml-4 md:hidden"
+        style={{ display: 'inline-block' }}
+      >
         {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
       </button>
 

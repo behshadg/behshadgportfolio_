@@ -5,8 +5,10 @@ const app = express();
 
 // Middleware to enable CORS
 const corsOptions = {
-  origin: 'http://localhost:5173', // Replace with the origin(s) you want to allow
-  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: 'https://behshadg-portfolio.netlify.app/', // Update this with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
