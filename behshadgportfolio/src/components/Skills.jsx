@@ -29,10 +29,10 @@ const Skills = () => {
             <p className="my-4">GITHUB</p>
           </div>
           <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
-            <p className="my-4">NODE.js</p>
+            <p className="my-4">NODE.JS</p>
           </div>
           <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
-            <p className="my-4">EXPRESS</p>
+            <p className="my-4">EXPRESS.JS</p>
           </div>
           <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
             <p className="my-4">MONGODB</p>
@@ -46,9 +46,9 @@ const Skills = () => {
           <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
             <p className="my-4">GIT</p>
           </div>
-          {/* <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
-            <p className="my-4">GraphQl</p>
-          </div> */}
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <p className="my-4">API'S</p>
+          </div>
         </div>
       </div>
     </div>

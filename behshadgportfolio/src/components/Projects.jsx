@@ -19,16 +19,83 @@ const Projects = () => {
                 Tic-Tac-Toe Game
               </span>
               <p className="text-center">
-                A classic Tic Tac Toe game built with HTML, CSS, and JavaScript.
+                A classic Tic Tac Toe game made with HTML, CSS, and JavaScript.
                 Built with React
               </p>
               <div className="pt-8 text-center">
-                <a href="https://behshadg-tictactoe.netlify.app">
+                <a
+                  href="https://behshadg-tictactoe.netlify.app"
+                  target="_blank"
+                >
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Demo
                   </button>
                 </a>
-                <a href="/">
+                <a
+                  href="https://github.com/behshadg/Tic-Tac-Toe-Game"
+                  target="_blank"
+                >
+                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+                    Code
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div">
+            {/* Hover Effects */}
+            <div className="opacity-0 group-hover:opacity-100 flex justify-center items-center flex-col">
+              <span className=" text-lg font-bold text-white tracking-wider">
+                Random Password Generator
+              </span>
+              <p className="text-center">
+                A simple web application that allows users to generate strong,
+                random passwords based on their preferences. Built on React w/
+                JavaScript, HTML/CSS andTailwind CSS
+              </p>
+              <div className="pt-8 text-center">
+                <a
+                  href="https://behshadg-randompwgen.netlify.app/"
+                  target="_blank"
+                >
+                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+                    Demo
+                  </button>
+                </a>
+                <a
+                  href="https://github.com/behshadg/RandomPWGen"
+                  target="_blank"
+                >
+                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+                    Code
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div">
+            {/* Hover Effects */}
+            <div className="opacity-0 group-hover:opacity-100 flex justify-center items-center flex-col">
+              <span className=" text-lg font-bold text-white tracking-wider">
+                Weather App
+              </span>
+              <p className="text-center">
+                A weather app that fetches real-time weather data using an API.
+                Built on React w/ Javascript, HTML/CSS, API
+              </p>
+              <div className="pt-8 text-center">
+                <a
+                  href="https://behshadg-weatherapp.netlify.app"
+                  target="_blank"
+                >
+                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+                    Demo
+                  </button>
+                </a>
+                <a
+                  href="https://github.com/behshadg/Weather-App"
+                  target="_blank"
+                >
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Code
                   </button>
@@ -46,12 +113,12 @@ const Projects = () => {
                 A CBT web application built with React and Mongodb
               </p>
               <div className="pt-8 text-center">
-                <a href="/">
+                <a href="/" target="_blank">
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Demo
                   </button>
                 </a>
-                <a href="/">
+                <a href="/" target="_blank">
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Code
                   </button>
@@ -69,58 +136,12 @@ const Projects = () => {
                 A CBT web application built with React and Mongodb
               </p>
               <div className="pt-8 text-center">
-                <a href="/">
+                <a href="/" target="_blank">
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Demo
                   </button>
                 </a>
-                <a href="/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Code
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div">
-            {/* Hover Effects */}
-            <div className="opacity-0 group-hover:opacity-100 flex justify-center items-center flex-col">
-              <span className=" text-lg font-bold text-white tracking-wider">
-                CBT Application
-              </span>
-              <p className="text-center">
-                A CBT web application built with React and Mongodb
-              </p>
-              <div className="pt-8 text-center">
-                <a href="/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Demo
-                  </button>
-                </a>
-                <a href="/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Code
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div">
-            {/* Hover Effects */}
-            <div className="opacity-0 group-hover:opacity-100 flex justify-center items-center flex-col">
-              <span className=" text-lg font-bold text-white tracking-wider">
-                CBT Application
-              </span>
-              <p className="text-center">
-                A CBT web application built with React and Mongodb
-              </p>
-              <div className="pt-8 text-center">
-                <a href="/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Demo
-                  </button>
-                </a>
-                <a href="/">
+                <a href="/" target="_blank">
                   <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                     Code
                   </button>
