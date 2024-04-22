@@ -30,8 +30,46 @@
   ) !important;
 }
 
-.text-lg {
-  font-size: 18px;
+@media (max-width: 767px) {
+  .w-full {
+    width: 100%;
+  }
+
+  .h-screen {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .text-4xl {
+    font-size: 2rem;
+  }
+
+  .text-lg {
+    font-size: 1rem;
+  }
+
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .py-16 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .w-4\/6 {
+    width: 100%;
+  }
+
+  .grid-cols-1,
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .sm\:text-right {
+    text-align: center;
+  }
 }
 
 button {
@@ -41,9 +79,4 @@ button {
 
 button:focus {
   @apply outline-none;
-}
-
-/* Adjust styles for specific button elements */
-.light-mode-button {
-  @apply ml-4; /* Adjust margin-left for the light mode button */
 }
