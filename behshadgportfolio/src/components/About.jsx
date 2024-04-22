@@ -22,7 +22,10 @@ const About = () => {
                 create visually appealing and intuitive interfaces that enhance
                 the user experience. I have experience working with various
                 technologies such as React, Node.js, and MongoDB to develop
-                responsive and scalable web solutions.
+                responsive and scalable web solutions. I'm a quick learner and a
+                team player who thrives in collaborative environments. I'm
+                always eager to learn new technologies and stay up-to-date with
+                the latest industry trends.
               </p>
               <p className="text-lg mt-4">
                 Outside of coding, I enjoy exploring new technologies,

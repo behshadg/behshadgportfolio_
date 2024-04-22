@@ -17,7 +17,9 @@ const Resume = () => {
             className="w-full h-[600px] border-none"
           />
         </div>
-        <a href="https://plum-camilla-20.tiiny.site/">Click to download CV</a>
+        <a href="https://plum-camilla-20.tiiny.site/" target="_blank">
+          Click to download CV
+        </a>
       </div>
     </div>
   );
