@@ -1,21 +1,26 @@
+import React from 'react';
 import resumePDF from '../../assets/Ghassemi_B_Resume.pdf';
-import '../Resume.css';
 
-function Resume() {
+const Resume = () => {
   return (
-    <div className="resume-container">
-      <div className="resume-wrapper">
-        <h1 className="resume-title">My Resume</h1>
-        <div className="resume-pdf">
+    <div id="resume" className="w-full h-screen bg-[#0a192f] text-gray-300">
+      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
+        <div className="w-full flex justify-center items-center flex-col mb-7">
+          <p className="text-4xl font-bold inline border-b-4 border-cyan-500 text-center">
+            My Resume
+          </p>
+        </div>
+        <div className="w-full flex justify-center">
           <iframe
             src={resumePDF}
             type="application/pdf"
-            className="resume-pdf-iframe"
+            className="w-full h-[600px] border-none"
           />
         </div>
+        <a href="https://plum-camilla-20.tiiny.site/">Click to download CV</a>
       </div>
     </div>
   );
-}
+};
 
 export default Resume;

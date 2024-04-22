@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -13,7 +13,7 @@ import './index.css';
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />

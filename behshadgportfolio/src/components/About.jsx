@@ -2,35 +2,33 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div
-      name="about"
-      id="about"
-      className="w-full h-screen bg-[#0a192f] text-gray-300"
-    >
-      <div className="flex flex-col justify-center items-center w-full h-full">
-        <div className=" py-16 rounded-md bg-cyan-800 flex flex-col justify-center items-center w-4/6">
-          <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8 mb-4">
-            <div className="sm:text-right pb-8 pl-4">
-              <p className="text-4xl font-bold inline border-b-4 border-cyan-500">
-                About me!
-              </p>
-            </div>
-            <div></div>
-          </div>
-          <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
-            <div className="sm:text-right text-4xl font-bold">
-              <p>
-                Hi. I'm Behshad Ghassemi, nice to meet you. Please take a look
-                around.
+    <div className="w-full h-screen bg-[#0a192f] text-gray-300">
+      <div className="flex flex-col justify-center items-center h-full">
+        <div className="py-16 rounded-md bg-cyan-800 w-4/6">
+          <div className="max-w-[1000px] w-full grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
+            <div className="sm:text-right text-center">
+              <p className="text-4xl font-bold border-b-4 border-cyan-500">
+                About Me
               </p>
             </div>
             <div>
-              <p>
-                {' '}
-                A web developer with experience in building Responsive and
-                Scalable Web apps. I am well-knowledged in UI/UX principles and
-                practices. In addition to software development, I also have a
-                strong background in customer service/success roles.
+              <p className="text-lg">
+                Hi, I'm Behshad Ghassemi. Welcome to my portfolio! I'm a
+                passionate web developer with a keen interest in crafting
+                elegant and user-friendly web applications.
+              </p>
+              <p className="text-lg mt-4">
+                With a strong foundation in UI/UX design principles, I strive to
+                create visually appealing and intuitive interfaces that enhance
+                the user experience. I have experience working with various
+                technologies such as React, Node.js, and MongoDB to develop
+                responsive and scalable web solutions.
+              </p>
+              <p className="text-lg mt-4">
+                Outside of coding, I enjoy exploring new technologies,
+                collaborating with fellow developers, and continuously expanding
+                my skill set. I'm committed to delivering high-quality work and
+                thrive in dynamic and collaborative environments.
               </p>
             </div>
           </div>
@@ -39,4 +37,5 @@ const About = () => {
     </div>
   );
 };
+
 export default About;
