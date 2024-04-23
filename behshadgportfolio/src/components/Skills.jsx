@@ -107,9 +107,9 @@ import React from 'react';
 
 const ProgressBar = ({ level }) => {
   return (
-    <div className="bg-gray-700 rounded-full h-4 w-full">
+    <div className="bg-gray-700 rounded-full h-5 w-full overflow-hidden">
       <div
-        className="bg-cyan-500 h-4 rounded-full"
+        className="bg-gradient-to-r from-cyan-400 to-blue-600 h-full rounded-full animate-progress"
         style={{ width: `${level}%` }}
       ></div>
     </div>
@@ -180,17 +180,17 @@ const Skills = () => {
           </p>
           <p className="py-4 text-2xl">
             I enjoy diving into and learning new things. Here's a list of
-            technologies I've worked with with more to add in the near future:
+            technologies I've worked with more to add in the near future:
           </p>
         </div>
         <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4 text-center py-8">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="shadow-md shadow-[#040c16] hover:scale-110 duration-500"
+              className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 rounded-lg p-4"
             >
               <img src={skill.icon} alt={skill.name} className="w-20 mx-auto" />
-              <p className="my-4">{skill.name}</p>
+              <p className="my-4 text-lg font-semibold">{skill.name}</p>
               <ProgressBar level={skill.level} />
             </div>
           ))}
