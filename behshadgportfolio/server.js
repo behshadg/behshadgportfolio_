@@ -1,40 +1,34 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+const sgMail = require('@sendgrid/mail');
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Middleware to enable CORS
-const corsOptions = {
-  origin: 'https://behshadg-portfolio.netlify.app/', // Update this with your frontend URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
-
-// Middleware to parse JSON request bodies
 app.use(express.json());
+app.use(cors());
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Route to handle the contact form submission
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Process the form data (e.g., send an email, save to a database, etc.)
-  console.log('Received form data:', { name, email, message });
+  const msg = {
+    to: 'ghassemiben@gmail.com', // Your email address
+    from: email,
+    subject: 'New Message from Portfolio Contact Form',
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  };
 
-  // Send a response back to the client
-  res.json({ message: 'Form data received successfully' });
+  try {
+    await sgMail.send(msg);
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Failed to send email' });
+  }
 });
 
-// Catch-all route to serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

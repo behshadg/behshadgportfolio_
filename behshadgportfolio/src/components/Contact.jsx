@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,21 +12,28 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        'http://localhost:3000/api/contact',
-        formData
+    emailjs
+      .sendForm(
+        'service_8ki4kln',
+        'template_5p3g40j',
+        e.target,
+        'zvFcQ3M4_u_TF_by6'
+      )
+      .then(
+        (result) => {
+          alert('Email sent successfully!');
+          console.log('Email sent successfully:', result.text);
+          // Reset form fields or show a success message
+          setFormData({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          console.error('Failed to send email:', error.text);
+          // Show an error message
+        }
       );
-      console.log('Form submission successful:', response.data);
-      // Reset form fields or show a success message
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Form submission failed:', error);
-      // Show an error message
-    }
   };
 
   return (
