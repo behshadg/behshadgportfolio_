@@ -14,7 +14,7 @@ app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
   const msg = {
-    to: 'ghassemiben@gmail.com', // Your email address
+    to: 'ghassemiben@gmail.com', // my email address
     from: email,
     subject: 'New Message from Portfolio Contact Form',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,

@@ -15,6 +15,30 @@ const Projects = () => {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           <ProjectItem
+            title={'Travel App'}
+            desc={
+              'A beautiful fabricated travel site landing page demonstrating creation of responsive UI/UX website. Built with React, Next.js and Tailwind CSS'
+            }
+            demoLink={'https://behshadg-travelsite.netlify.app/'}
+            codeLink={'https://github.com/behshadg/Travel-Site'}
+          ></ProjectItem>
+          {/* <ProjectItem
+            title={'Banking App'}
+            desc={
+              'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
+            }
+            demoLink={'https://behshadg-tictactoe.netlify.app/'}
+            codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
+          ></ProjectItem>
+          <ProjectItem
+            title={'Tic-Tac-Toe Game'}
+            desc={
+              'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
+            }
+            demoLink={'https://behshadg-tictactoe.netlify.app/'}
+            codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
+          ></ProjectItem> */}
+          <ProjectItem
             title={'Tic-Tac-Toe Game'}
             desc={
               'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
@@ -25,7 +49,7 @@ const Projects = () => {
           <ProjectItem
             title={'Random Password Generator'}
             desc={
-              'A simple web application that allows users to generate strong, random passwords based on their preferences. Built on React w/JavaScript, HTML/CSS andTailwind CSS'
+              'A simple web application that allows users to generate strong, random passwords based on their preferences. Built on React w/JavaScript, HTML and Tailwind CSS'
             }
             demoLink={'https://behshadg-randompwgen.netlify.app/'}
             codeLink={'https://github.com/behshadg/RandomPWGen'}

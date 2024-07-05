@@ -28,6 +28,11 @@ const skills = [
     level: 80,
   },
   {
+    name: 'TYPESCRIPT',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    level: 50,
+  },
+  {
     name: 'REACT',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     level: 75,
