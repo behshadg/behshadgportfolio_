@@ -22,22 +22,23 @@ const Projects = () => {
             demoLink={'https://behshadg-travelsite.netlify.app/'}
             codeLink={'https://github.com/behshadg/Travel-Site'}
           ></ProjectItem>
-          {/* <ProjectItem
-            title={'Banking App'}
-            desc={
-              'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
-            }
-            demoLink={'https://behshadg-tictactoe.netlify.app/'}
-            codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
-          ></ProjectItem>
           <ProjectItem
+            title={'Zoom Clone'}
+            desc={
+              'A zoom clone video conferencing app using Next.js 14, TypeScript, Stream, and Tailwind CSS'
+            }
+            demoLink={'https://zoom-clone-eta-ebon.vercel.app'}
+            codeLink={'https://github.com/behshadg/Zoom-Clone'}
+          ></ProjectItem>
+
+          {/* <ProjectItem
             title={'Tic-Tac-Toe Game'}
             desc={
               'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
             }
             demoLink={'https://behshadg-tictactoe.netlify.app/'}
             codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
-          ></ProjectItem> */}
+          ></ProjectItem>  */}
           <ProjectItem
             title={'Tic-Tac-Toe Game'}
             desc={
@@ -85,7 +86,7 @@ function ProjectItem({ title, desc, demoLink, codeLink }) {
           </a>
           <a href={codeLink} target="_blank">
             <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-              Code
+              Link to the Code
             </button>
           </a>
         </div>
