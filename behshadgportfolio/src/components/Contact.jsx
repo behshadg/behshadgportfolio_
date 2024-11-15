@@ -26,12 +26,10 @@ const Contact = () => {
         (result) => {
           alert('Email sent successfully!');
           console.log('Email sent successfully:', result.text);
-          // Reset form fields or show a success message
           setFormData({ name: '', email: '', message: '' });
         },
         (error) => {
           console.error('Failed to send email:', error.text);
-          // Show an error message
         }
       );
   };

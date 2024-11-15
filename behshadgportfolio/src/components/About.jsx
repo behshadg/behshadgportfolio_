@@ -13,25 +13,26 @@ const About = () => {
             </div>
             <div>
               <p className="text-lg">
-                Hi, I'm Behshad Ghassemi. Welcome to my portfolio! I'm a
-                passionate web developer with a keen interest in crafting
+                Hi, I&apos;m Behshad Ghassemi. Welcome to my portfolio! I&apos;m
+                a passionate web developer with a keen interest in crafting
                 elegant and user-friendly web applications.
               </p>
               <p className="text-lg mt-4">
                 With a strong foundation in UI/UX design principles, I strive to
                 create visually appealing and intuitive interfaces that enhance
                 the user experience. I have experience working with various
-                technologies such as React, Node.js, and MongoDB to develop
-                responsive and scalable web solutions. I'm a quick learner and a
-                team player who thrives in collaborative environments. I'm
-                always eager to learn new technologies and stay up-to-date with
-                the latest industry trends.
+                technologies such as React, NextJS, Tailwind, Node.js, and
+                MongoDB just to name a few to develop responsive and scalable
+                web solutions. I&apos;m a quick learner and a team player who
+                thrives in collaborative environments. I&apos;m always eager to
+                learn new technologies and stay up-to-date with the latest
+                industry trends.
               </p>
               <p className="text-lg mt-4">
                 Outside of coding, I enjoy exploring new technologies,
                 collaborating with fellow developers, and continuously expanding
-                my skill set. I'm committed to delivering high-quality work and
-                thrive in dynamic and collaborative environments.
+                my skill set. I&apos;m committed to delivering high-quality work
+                and thrive in dynamic and collaborative environments.
               </p>
             </div>
           </div>
