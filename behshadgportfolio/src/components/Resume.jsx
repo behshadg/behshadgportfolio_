@@ -1,36 +1,41 @@
-import React from 'react';
-import resumePDF from '../../assets/Ghassemi_B_Resume.pdf';
-import certPDF from '../../assets/Fullstack.pdf';
+import { FiArrowUpRight, FiFileText } from 'react-icons/fi';
 
-const Resume = () => {
+function Resume({ resume }) {
   return (
-    <div id="resume" className="w-full h-screen bg-[#0a192f] text-gray-300">
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
-        <div className="w-full flex justify-center items-center flex-col mb-7">
-          <p className="text-4xl font-bold inline border-b-4 border-cyan-500 text-center">
-            Resume & Certfication
-          </p>
-        </div>
-        <div className="w-full flex justify-center">
-          <iframe
-            src={resumePDF}
-            type="application/pdf"
-            className="w-full h-[500px] border-none"
-          />
-        </div>
-        <a href="https://plum-camilla-20.tiiny.site/" target="_blank">
-          Click to download CV
-        </a>
-        <div className="w-full flex justify-center">
-          <iframe
-            src={certPDF}
-            type="application/pdf"
-            className="w-full h-[300px] border-none"
-          />
-        </div>
+    <section id="resume" className="section-shell mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="section-heading">
+        <span className="eyebrow">Resume</span>
+        <h2 className="font-display text-4xl text-white sm:text-5xl">
+          Quick access to the documents that support the work.
+        </h2>
       </div>
-    </div>
+
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
+        {resume.cards.map((card) => (
+          <article key={card.title} className="feature-card">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-200">
+              <FiFileText size={22} />
+            </div>
+            <h3 className="mt-6 font-display text-3xl text-white">
+              {card.title}
+            </h3>
+            <p className="mt-4 text-base leading-7 text-stone-300">
+              {card.description}
+            </p>
+            <a
+              href={card.href}
+              target="_blank"
+              rel="noreferrer"
+              className="button-secondary mt-8 inline-flex"
+            >
+              {card.actionLabel}
+              <FiArrowUpRight />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
   );
-};
+}
 
 export default Resume;

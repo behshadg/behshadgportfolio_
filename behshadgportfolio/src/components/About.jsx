@@ -1,45 +1,38 @@
-import React from 'react';
-
-const About = () => {
+function About({ about }) {
   return (
-    <div className="w-full h-screen bg-[#0a192f] text-gray-300">
-      <div className="flex flex-col justify-center items-center h-full">
-        <div className="py-16 rounded-md bg-cyan-800 w-4/6">
-          <div className="max-w-[1000px] w-full grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
-            <div className="sm:text-right text-center">
-              <p className="text-4xl font-bold border-b-4 border-cyan-500">
-                About Me
+    <section id="about" className="section-shell mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="section-heading">
+        <span className="eyebrow">About</span>
+        <h2 className="font-display text-4xl text-white sm:text-5xl">
+          Built to look sharper and stay easier to maintain.
+        </h2>
+      </div>
+
+      <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="info-panel space-y-6">
+          <p className="text-xl leading-8 text-stone-100/95">{about.intro}</p>
+          {about.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="text-base leading-8 text-stone-300">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        <div className="grid gap-4">
+          {about.pillars.map((pillar) => (
+            <article key={pillar.title} className="feature-card">
+              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/75">
+                {pillar.title}
               </p>
-            </div>
-            <div>
-              <p className="text-lg">
-                Hi, I&apos;m Behshad Ghassemi. Welcome to my portfolio! I&apos;m
-                a passionate web developer with a keen interest in crafting
-                elegant and user-friendly web applications.
+              <p className="mt-3 text-base leading-7 text-stone-200">
+                {pillar.body}
               </p>
-              <p className="text-lg mt-4">
-                With a strong foundation in UI/UX design principles, I strive to
-                create visually appealing and intuitive interfaces that enhance
-                the user experience. I have experience working with various
-                technologies such as React, NextJS, Tailwind, Node.js, and
-                MongoDB just to name a few to develop responsive and scalable
-                web solutions. I&apos;m a quick learner and a team player who
-                thrives in collaborative environments. I&apos;m always eager to
-                learn new technologies and stay up-to-date with the latest
-                industry trends.
-              </p>
-              <p className="text-lg mt-4">
-                Outside of coding, I enjoy exploring new technologies,
-                collaborating with fellow developers, and continuously expanding
-                my skill set. I&apos;m committed to delivering high-quality work
-                and thrive in dynamic and collaborative environments.
-              </p>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default About;

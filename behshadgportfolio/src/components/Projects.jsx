@@ -1,97 +1,111 @@
-import React from 'react';
-const Projects = () => {
-  return (
-    <div name="work" className="w-full md:h-screen text-gray-300 bg-[#0a192f]">
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
-        <div className="pb-8 w-full flex justify-center items-center flex-col">
-          <p className="text-4xl font-bold inline border-b-4 text-gray-300 border-cyan-500">
-            Work
-          </p>
-          <p className="py-6 text-2xl">
-            Check out some of my most recent work (hover over each box to
-            reveal)
-          </p>
-        </div>
+import { useMemo, useState } from 'react';
+import { FiArrowUpRight, FiCode } from 'react-icons/fi';
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <ProjectItem
-            title={'Travel App'}
-            desc={
-              'A beautiful fabricated travel site landing page demonstrating creation of responsive UI/UX website. Built with React, Next.js and Tailwind CSS'
-            }
-            demoLink={'https://behshadg-travelsite.netlify.app/'}
-            codeLink={'https://github.com/behshadg/Travel-Site'}
-          ></ProjectItem>
-          <ProjectItem
-            title={'Zoom Clone'}
-            desc={
-              'A zoom clone video conferencing app using Next.js 14, TypeScript, Stream, and Tailwind CSS'
-            }
-            demoLink={'https://zoom-clone-eta-ebon.vercel.app'}
-            codeLink={'https://github.com/behshadg/Zoom-Clone'}
-          ></ProjectItem>
-
-          {/* <ProjectItem
-            title={'Tic-Tac-Toe Game'}
-            desc={
-              'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
-            }
-            demoLink={'https://behshadg-tictactoe.netlify.app/'}
-            codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
-          ></ProjectItem>  */}
-          <ProjectItem
-            title={'Tic-Tac-Toe Game'}
-            desc={
-              'A classic Tic Tac Toe game made with HTML, CSS, and JavaScript. Built with React'
-            }
-            demoLink={'https://behshadg-tictactoe.netlify.app/'}
-            codeLink={'https://github.com/behshadg/Tic-Tac-Toe-Game'}
-          ></ProjectItem>
-          <ProjectItem
-            title={'Random Password Generator'}
-            desc={
-              'A simple web application that allows users to generate strong, random passwords based on their preferences. Built on React w/JavaScript, HTML and Tailwind CSS'
-            }
-            demoLink={'https://behshadg-randompwgen.netlify.app/'}
-            codeLink={'https://github.com/behshadg/RandomPWGen'}
-          ></ProjectItem>
-          <ProjectItem
-            title={'Weather App'}
-            desc={
-              'A weather app that fetches real-time weather data using an API. Built on React w/ Javascript, HTML/CSS, API'
-            }
-            demoLink={'https://behshadg-weatherapp.netlify.app'}
-            codeLink={'https://github.com/behshadg/Weather-App'}
-          ></ProjectItem>
-        </div>
-      </div>
-    </div>
+function Projects({ projects }) {
+  const categories = useMemo(
+    () => ['All', ...new Set(projects.map((project) => project.category))],
+    [projects]
   );
-};
+  const [activeCategory, setActiveCategory] = useState('All');
 
-function ProjectItem({ title, desc, demoLink, codeLink }) {
+  const visibleProjects =
+    activeCategory === 'All'
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
+
   return (
-    <div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div transform transition hover:scale-110">
-      {/* Hover Effects */}
-      <div className="opacity-0 group-hover:opacity-100 flex justify-center items-center flex-col">
-        <span className=" text-lg font-bold text-white tracking-wider">
-          {title}
-        </span>
-        <p className="text-center">{desc}</p>
-        <div className="pt-8 text-center">
-          <a href={demoLink} target="_blank">
-            <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-              Demo
-            </button>
-          </a>
-          <a href={codeLink} target="_blank">
-            <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-              Link to the Code
-            </button>
-          </a>
-        </div>
+    <section
+      id="projects"
+      className="section-shell mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8 lg:py-24"
+    >
+      <div className="section-heading">
+        <span className="eyebrow">Projects</span>
+        <h2 className="font-display text-4xl text-white sm:text-5xl">
+          Featured work with room to grow.
+        </h2>
+        <p className="mt-4 max-w-3xl text-base leading-8 text-stone-300">
+          The project section now runs from a single data file, so adding new
+          work later is much easier than manually editing repeated layout code.
+        </p>
       </div>
-    </div>
+
+      <div className="mt-8 flex flex-wrap gap-3">
+        {categories.map((category) => {
+          const isActive = category === activeCategory;
+
+          return (
+            <button
+              key={category}
+              type="button"
+              className={isActive ? 'chip-active' : 'chip'}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        {visibleProjects.map((project) => (
+          <article key={project.title} className="project-card">
+            <div
+              className={`project-glow bg-gradient-to-br ${project.accent}`}
+              aria-hidden="true"
+            />
+            <div className="relative z-10">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.24em] text-cyan-100/75">
+                    {project.category}
+                  </p>
+                  <h3 className="mt-3 font-display text-3xl text-white">
+                    {project.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="mt-5 text-lg leading-8 text-stone-100/90">
+                {project.summary}
+              </p>
+              <p className="mt-4 text-base leading-7 text-stone-300">
+                {project.details}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.stack.map((item) => (
+                  <span key={item} className="stack-chip">
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-primary"
+                >
+                  Live Demo
+                  <FiArrowUpRight />
+                </a>
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-secondary"
+                >
+                  Source Code
+                  <FiCode />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
+
 export default Projects;

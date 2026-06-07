@@ -1,114 +1,57 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
+import { useState } from 'react';
+import { FiArrowUpRight, FiCopy, FiMail } from 'react-icons/fi';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+function Contact({ contact }) {
+  const [copied, setCopied] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        'service_8ki4kln',
-        'template_5p3g40j',
-        e.target,
-        'zvFcQ3M4_u_TF_by6'
-      )
-      .then(
-        (result) => {
-          alert('Email sent successfully!');
-          console.log('Email sent successfully:', result.text);
-          setFormData({ name: '', email: '', message: '' });
-        },
-        (error) => {
-          console.error('Failed to send email:', error.text);
-        }
-      );
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch (error) {
+      setCopied(false);
+    }
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen py-20">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">
-          Contact Me
-        </h1>
-        <div className="max-w-2xl mx-auto">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-gray-800 p-8 rounded-lg shadow-md"
+    <section id="contact" className="section-shell mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="contact-panel">
+        <div className="max-w-2xl">
+          <span className="eyebrow">Contact</span>
+          <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">
+            Let&apos;s build something thoughtful.
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-stone-200">
+            {contact.intro}
+          </p>
+          <p className="mt-4 text-base leading-7 text-stone-300">
+            {contact.availability}
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-[1fr_auto_auto]">
+          <a href={contact.links[0].href} className="button-primary">
+            <FiMail />
+            {contact.email}
+          </a>
+          <button type="button" className="button-secondary" onClick={copyEmail}>
+            <FiCopy />
+            {copied ? 'Copied' : 'Copy Email'}
+          </button>
+          <a
+            href={contact.links[1].href}
+            target="_blank"
+            rel="noreferrer"
+            className="button-secondary"
           >
-            <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-gray-300 font-bold mb-2"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-300 font-bold mb-2"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="message"
-                className="block text-gray-300 font-bold mb-2"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-2 rounded-md bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your message"
-              />
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-blue-500 text-white font-bold py-2 px-6 rounded-md hover:bg-blue-600 transition-colors duration-300"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+            {contact.links[1].label}
+            <FiArrowUpRight />
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Contact;

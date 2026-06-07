@@ -1,140 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from 'react';
+import { FiArrowUpRight, FiMenu, FiX } from 'react-icons/fi';
 
-const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const [shadow, setShadow] = useState(false);
+function Navbar({ navLinks, socialLinks }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleNav = () => setNav(!nav);
-
-  useEffect(() => {
-    const handleShadow = () => {
-      if (window.scrollY >= 90) {
-        setShadow(true);
-      } else {
-        setShadow(false);
-      }
-    };
-    window.addEventListener('scroll', handleShadow);
-    return () => {
-      window.removeEventListener('scroll', handleShadow);
-    };
-  }, []);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <header
-      className={`fixed w-full h-20 z-50 ${shadow ? 'bg-[#0a192f]/90 backdrop-blur-sm shadow-xl' : 'bg-[#0a192f]'} transition-all duration-300`}
-    >
-      <div className="container mx-auto h-full flex justify-between items-center px-4 2xl:px-16">
-        <Link to="/">
-          <h1 className="text-cyan-500 text-3xl font-bold tracking-wider">
-            BG<span className="text-white">DEV</span>
-          </h1>
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+        <a
+          href="#home"
+          className="font-display text-lg tracking-[0.24em] text-stone-100"
+        >
+          BG / PORTFOLIO
+        </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex">
-          <ul className="hidden md:flex">
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/skills">Skills</Link>
-            </li>
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/projects">Projects</Link>
-            </li>
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li className="ml-10 text-sm uppercase hover:text-cyan-500 transition-colors duration-300">
-              <Link to="/resume">Resume</Link>
-            </li>
-          </ul>
+        <nav className="hidden items-center gap-6 lg:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-stone-300 transition hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Mobile Navigation Icon */}
-        <div
-          onClick={handleNav}
-          className="md:hidden cursor-pointer p-2 hover:bg-cyan-500/20 rounded-full transition-all duration-300"
-        >
-          {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
+        <div className="hidden items-center gap-3 lg:flex">
+          {socialLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-stone-200 transition hover:border-white/25 hover:bg-white/5"
+            >
+              {link.label}
+              <FiArrowUpRight className="text-sm" />
+            </a>
+          ))}
         </div>
+
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-stone-100 transition hover:bg-white/10 lg:hidden"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+        </button>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <div
-        className={`fixed left-0 top-0 w-full h-screen bg-black/70 backdrop-blur-sm ${nav ? 'block' : 'hidden'} md:hidden`}
-      >
-        <div
-          className={`fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#0a192f] p-10 ease-in duration-500 ${nav ? 'left-0' : 'left-[-100%]'}`}
-        >
-          <div>
-            <div className="flex w-full items-center justify-between">
-              <h1 className="text-cyan-500 text-3xl font-bold tracking-wider">
-                BG<span className="text-white">DEV</span>
-              </h1>
-              <div
-                onClick={handleNav}
-                className="p-3 rounded-full shadow-lg bg-cyan-500/20 cursor-pointer"
+      {isOpen ? (
+        <div className="border-t border-white/10 bg-slate-950/95 px-5 py-5 lg:hidden">
+          <nav className="mx-auto flex max-w-6xl flex-col gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-2xl px-4 py-3 text-base text-stone-200 transition hover:bg-white/10"
+                onClick={closeMenu}
               >
-                <FaTimes size={18} />
-              </div>
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-3 flex flex-col gap-2 border-t border-white/10 pt-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="rounded-2xl border border-white/10 px-4 py-3 text-sm text-stone-200"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
-            <div className="border-b border-gray-700 my-4">
-              <p className="py-4 text-gray-400">
-                Let's build something amazing together
-              </p>
-            </div>
-          </div>
-          <nav className="py-4 flex flex-col">
-            <ul>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/">Home</Link>
-              </li>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/about">About</Link>
-              </li>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/skills">Skills</Link>
-              </li>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/projects">Projects</Link>
-              </li>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/contact">Contact</Link>
-              </li>
-              <li
-                onClick={() => setNav(false)}
-                className="py-4 hover:text-cyan-500 transition-colors duration-300"
-              >
-                <Link to="/resume">Resume</Link>
-              </li>
-            </ul>
           </nav>
         </div>
-      </div>
+      ) : null}
     </header>
   );
-};
+}
 
 export default Navbar;

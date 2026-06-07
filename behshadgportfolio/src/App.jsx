@@ -1,27 +1,30 @@
-// /src/App.jsx
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import About from './components/About';
-import Contact from './components/Contact';
-import Resume from './components/Resume';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
+import Navbar from './components/Navbar';
 import Home from './components/Home';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Resume from './components/Resume';
+import Contact from './components/Contact';
+import { portfolioData } from './data/portfolio';
 import './index.css';
 
 function App() {
   return (
-    <>
-      {/* <Navbar /> */}
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </>
+    <div className="page-shell text-stone-100">
+      <div className="page-grid" aria-hidden="true" />
+      <Navbar
+        navLinks={portfolioData.navLinks}
+        socialLinks={portfolioData.socialLinks}
+      />
+      <main className="relative z-10">
+        <Home hero={portfolioData.hero} stats={portfolioData.stats} />
+        <About about={portfolioData.about} />
+        <Projects projects={portfolioData.projects} />
+        <Skills skillGroups={portfolioData.skillGroups} />
+        <Resume resume={portfolioData.resume} />
+        <Contact contact={portfolioData.contact} />
+      </main>
+    </div>
   );
 }
 
