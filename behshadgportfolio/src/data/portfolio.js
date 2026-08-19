@@ -1,4 +1,4 @@
-import resumePdf from '../../assets/Ghassemi_B_Resume.pdf';
+import resumePdf from '../../assets/Behshad_G_Resume.pdf';
 import certificatePdf from '../../assets/Fullstack.pdf';
 
 export const portfolioData = {
@@ -23,7 +23,8 @@ export const portfolioData = {
   hero: {
     eyebrow: 'Portfolio 2026',
     name: 'Behshad Ghassemi',
-    title: 'Full-stack developer crafting polished, dependable web experiences.',
+    title:
+      'Full-stack developer crafting polished, dependable web experiences.',
     summary:
       'I build responsive interfaces, API-backed apps, and product experiences that feel modern, fast, and easy to use.',
     focus:
